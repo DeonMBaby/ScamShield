@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>ScamShield</title>
+  <style>
+    :root { color-scheme: light dark; font-family: system-ui, sans-serif; }
+    body { margin: 0; background: #f6f7fb; color: #14172b; }
+    header { height: 58px; box-sizing: border-box; display: flex; align-items: center; gap: 12px; padding: 0 18px; background: #171a30; color: #fff; }
+    h1 { margin: 0 auto 0 0; font-size: 1.1rem; }
+    button { border: 1px solid #818cf8; border-radius: 8px; padding: 8px 12px; background: transparent; color: #fff; font: inherit; cursor: pointer; }
+    button[aria-selected="true"] { background: #6366f1; }
+    iframe { display: block; width: 100%; height: calc(100vh - 58px); height: calc(100dvh - 58px); border: 0; }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>ScamShield</h1>
+    <button type="button" aria-selected="true" data-page="scamshield.html">Message checker</button>
+    <button type="button" aria-selected="false" data-page="scroll-presentation.html">Presentation</button>
+  </header>
+  <iframe id="app" title="ScamShield" src="scamshield.html"></iframe>
+  <script>
+    const frame = document.querySelector('#app');
+    document.querySelectorAll('[data-page]').forEach(button => {
+      button.addEventListener('click', () => {
+        frame.src = button.dataset.page;
+        document.querySelectorAll('[data-page]').forEach(item =>
+          item.setAttribute('aria-selected', String(item === button)));
+      });
+    });
+    window.addEventListener('message', event => {
+      if (event.data === 'open-checker') {
+        frame.src = 'scamshield.html';
+        document.querySelectorAll('[data-page]').forEach(item =>
+          item.setAttribute('aria-selected', String(item.dataset.page === 'scamshield.html')));
+      }
+    });
+  </script>
+</body>
+</html>

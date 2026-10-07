@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>ScamShield · Scroll Presentation</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<style>
+:root{box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+html{scroll-padding-top:env(safe-area-inset-top,0px);height:100%}
+body{height:100%;margin:0;background:#0f172a;font-family:system-ui,-apple-system,Segoe UI,Roboto,sans-serif}
+#deck{height:100%;overflow-y:scroll;scroll-snap-type:y mandatory;scroll-behavior:smooth;overscroll-behavior:contain}
+.page{height:100vh;height:100dvh;scroll-snap-align:start;scroll-snap-stop:always;position:relative;overflow:hidden}
+/* reveal: hidden until page becomes .active */
+.rv{opacity:0;transform:translateY(40px);transition:opacity .7s ease-in-out,transform .7s ease-in-out}
+.rv.l{transform:translateX(-50px)}.rv.r{transform:translateX(50px)}
+.active .rv{opacity:1;transform:none}
+.d1{transition-delay:.15s}.d2{transition-delay:.3s}.d3{transition-delay:.45s}.d4{transition-delay:.6s}
+.shape{opacity:0;transform:scale(.4) rotate(-90deg);transition:opacity .7s ease-in-out,transform 1s ease-in-out}
+.active .shape{opacity:1;transform:scale(1) rotate(0)}
+.slideup{opacity:0;transform:translateY(120px);transition:opacity .7s ease-in-out,transform .7s ease-in-out}
+.active .slideup{opacity:1;transform:none}
+@keyframes bob{0%,100%{transform:translateY(0)}50%{transform:translateY(10px)}}
+.bob{animation:bob 1.6s ease-in-out infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+.orbit{transform-origin:200px 200px;animation:spin 24s linear infinite}
+.orbit2{transform-origin:200px 200px;animation:spin 16s linear infinite reverse}
+.glow{background:radial-gradient(circle at 50% 40%,rgba(99,102,241,.25),transparent 60%)}
+.dot{transition:all .5s ease-in-out}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition-duration:.01ms!important}#deck{scroll-behavior:auto}}
+</style></head>
+<body class="bg-slate-900 text-slate-100">
+
+<nav id="dots" class="fixed right-4 top-1/2 -translate-y-1/2 z-20 flex flex-col gap-3" aria-label="Pages">
+  <button class="dot w-2.5 h-2.5 rounded-full bg-slate-600" aria-label="Page 1"></button>
+  <button class="dot w-2.5 h-2.5 rounded-full bg-slate-600" aria-label="Page 2"></button>
+  <button class="dot w-2.5 h-2.5 rounded-full bg-slate-600" aria-label="Page 3"></button>
+</nav>
+
+<main id="deck">
+
+<!-- PAGE 1 -->
+<section class="page glow flex flex-col items-center justify-center text-center px-6" id="p1">
+  <p class="rv text-indigo-400 tracking-[.3em] text-xs sm:text-sm uppercase mb-5">VibeCode · Build Beyond Boundaries</p>
+  <h1 class="rv d1 text-5xl sm:text-7xl md:text-8xl font-extrabold tracking-tight leading-none">
+    Think before<br><span class="bg-gradient-to-r from-indigo-400 to-cyan-300 bg-clip-text text-transparent">you click.</span>
+  </h1>
+  <p class="rv d2 mt-6 max-w-xl text-slate-400 text-base sm:text-lg">ScamShield turns a suspicious message into a clear verdict in seconds, so no one has to fall for it alone.</p>
+  <div class="rv d4 absolute bottom-8 flex flex-col items-center text-slate-400 text-xs tracking-widest uppercase">
+    <span>Scroll Down</span>
+    <svg class="bob mt-2" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>
+  </div>
+</section>
+
+<!-- PAGE 2 -->
+<section class="page bg-slate-950 flex items-center" id="p2">
+  <div class="max-w-6xl mx-auto w-full px-6 md:px-12 grid md:grid-cols-2 gap-8 md:gap-12 items-center">
+    <div>
+      <p class="rv l text-cyan-300 text-xs sm:text-sm tracking-[.25em] uppercase mb-3">The Solution</p>
+      <h2 class="rv l d1 text-3xl sm:text-5xl font-bold leading-tight mb-5">Scams work because we're rushed.</h2>
+      <p class="rv l d2 text-slate-400 mb-6">Paste any SMS, WhatsApp or email. ScamShield scans it for the tricks fraudsters rely on and explains each one in plain language.</p>
+      <ul class="space-y-3 text-slate-300">
+        <li class="rv l d2 flex gap-3"><span class="text-indigo-400">▸</span> Risk score with red-flag breakdown</li>
+        <li class="rv l d3 flex gap-3"><span class="text-indigo-400">▸</span> "Spot the scam" quiz to build instincts</li>
+        <li class="rv l d4 flex gap-3"><span class="text-indigo-400">▸</span> Step-by-step recovery guide if it's too late</li>
+      </ul>
+    </div>
+    <div class="flex justify-center">
+      <svg id="art" class="shape w-64 sm:w-80 md:w-[26rem] max-w-full cursor-pointer" viewBox="0 0 400 400" role="img" aria-label="Rotating shield graphic">
+        <defs><linearGradient id="g" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#818cf8"/><stop offset="1" stop-color="#22d3ee"/></linearGradient></defs>
+        <g class="orbit" fill="none" stroke="#6366f1" stroke-opacity=".5"><circle cx="200" cy="200" r="180" stroke-dasharray="6 10"/><circle cx="380" cy="200" r="9" fill="#818cf8" stroke="none"/></g>
+        <g class="orbit2" fill="none" stroke="#22d3ee" stroke-opacity=".4"><circle cx="200" cy="200" r="140" stroke-dasharray="3 9"/><circle cx="200" cy="60" r="7" fill="#22d3ee" stroke="none"/></g>
+        <path d="M200 90 L290 125 V205 C290 255 250 290 200 312 C150 290 110 255 110 205 V125 Z" fill="url(#g)" fill-opacity=".18" stroke="url(#g)" stroke-width="4"/>
+        <path d="M160 202 L190 232 L246 170" fill="none" stroke="url(#g)" stroke-width="12" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    </div>
+  </div>
+</section>
+
+<!-- PAGE 3 -->
+<section class="page glow flex items-center justify-center px-6" id="p3">
+  <div class="slideup max-w-3xl w-full text-center bg-slate-800/60 border border-slate-700 rounded-3xl p-8 sm:p-12 backdrop-blur">
+    <p class="text-indigo-400 text-xs sm:text-sm tracking-[.25em] uppercase mb-3">Why it matters</p>
+    <h2 class="text-3xl sm:text-5xl font-bold mb-8">Awareness is the best firewall.</h2>
+    <div class="grid grid-cols-3 gap-4 mb-9">
+      <div><div class="text-3xl sm:text-5xl font-extrabold text-cyan-300" data-n="11">0</div><div class="text-slate-400 text-xs sm:text-sm mt-1">scam patterns detected</div></div>
+      <div><div class="text-3xl sm:text-5xl font-extrabold text-cyan-300" data-n="0">0</div><div class="text-slate-400 text-xs sm:text-sm mt-1">bytes uploaded</div></div>
+      <div><div class="text-3xl sm:text-5xl font-extrabold text-cyan-300" data-n="1">0</div><div class="text-slate-400 text-xs sm:text-sm mt-1">second to a verdict</div></div>
+    </div>
+    <div class="flex flex-col sm:flex-row gap-3 justify-center">
+      <button id="try" class="px-7 py-3 rounded-xl bg-indigo-500 hover:bg-indigo-400 font-semibold transition duration-700 ease-in-out hover:scale-105">Try ScamShield</button>
+      <button id="top" class="px-7 py-3 rounded-xl border border-slate-600 hover:border-indigo-400 transition duration-700 ease-in-out">↑ Back to start</button>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<script>
+const deck=document.getElementById('deck'),pages=[...document.querySelectorAll('.page')],dots=[...document.querySelectorAll('#dots .dot')];
+function setDot(i){dots.forEach((d,k)=>{d.classList.toggle('bg-indigo-400',k===i);d.classList.toggle('bg-slate-600',k!==i);d.style.transform=k===i?'scale(1.8)':'scale(1)'})}
+function count(el){el.querySelectorAll('[data-n]').forEach(n=>{const t=+n.dataset.n;if(t===0){n.textContent='0';return}let c=0;const s=setInterval(()=>{c++;n.textContent=c;if(c>=t)clearInterval(s)},Math.max(40,700/t))})}
+const io=new IntersectionObserver(es=>es.forEach(e=>{
+  if(e.isIntersecting){e.target.classList.add('active');setDot(pages.indexOf(e.target));if(e.target.id==='p3')count(e.target)}
+  else e.target.classList.remove('active') // replays animation when you return
+}),{root:deck,threshold:.6});
+pages.forEach(p=>io.observe(p));
+dots.forEach((d,i)=>d.onclick=()=>pages[i].scrollIntoView({behavior:'smooth'}));
+document.getElementById('top').onclick=()=>pages[0].scrollIntoView({behavior:'smooth'});
+document.getElementById('try').onclick=()=>{if(window.parent!==window)window.parent.postMessage('open-checker','*');else location.href='scamshield.html'};
+addEventListener('keydown',e=>{
+  const cur=Math.max(0,dots.findIndex(d=>d.classList.contains('bg-indigo-400')));
+  if(['ArrowDown','PageDown',' '].includes(e.key)){e.preventDefault();pages[Math.min(cur+1,pages.length-1)].scrollIntoView({behavior:'smooth'})}
+  if(['ArrowUp','PageUp'].includes(e.key)){e.preventDefault();pages[Math.max(cur-1,0)].scrollIntoView({behavior:'smooth'})}
+});
+// interactive graphic: click to spin
+const art=document.getElementById('art');let rot=0;
+art.addEventListener('click',()=>{rot+=360;art.style.transition='transform 1s ease-in-out';art.style.transform='rotate('+rot+'deg)'});
+</script>
+</body></html>
